@@ -18,8 +18,10 @@ export const resetStore = () => {
 resetStore()
 
 ReactDOM.render(
-  <Router>
-      <App />
-  </Router>,
+  <Provider store={store}>
+    <Router>
+        <App />
+    </Router>
+  </Provider>,
   document.getElementById('root')
 );
