@@ -72,13 +72,16 @@ In this project, you take a fairly complex application used to search a movie da
 
 * [x] Connect the favorites state to the FavoriteMovieList component and test.
 
-* [ ] Connect the displayFavorites state to the Movie and MovieHeader component.
+* [x] Connect the displayFavorites state to the Movie and MovieHeader component.
 
 #### Build out the favorites actions
 > *Now is your chance to build our all the rest of the app on your own. You can do this!*
 
 1. Add in reducer cases, action creators and event handler code for the following actions:
-  - toggleFavorites : Switches the displayFavorites state value between true and false. When displayFavorites is true, the favorite button does not show on the Movie page.
+  - toggleFavorites : Switches the displayFavorites state value between true and false. 
+  
+  
+  ----> need to do: When displayFavorites is true, the favorite button does not show on the Movie page.
   
   - addFavorites: Adds in a new movie object into the favorites list.
   - removeFavorite: Removes a movie Object from the favorites list with an id passed in.

@@ -8,6 +8,22 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
     switch(action.type) {
+        case TOGGLE_FAVORITES: 
+        return {
+            displayFavorites: !state.displayFavorites
+        }
+        case ADD_FAVORITE: 
+        const favorite = {
+            ...action.payload, 
+                id: Date.now()
+            }
+        return {
+            favorites: [...state.favorites, favorite]
+        }
+        case REMOVE_FAVORITE: 
+        return {
+            favorites: state.favorites.filter(mov=>(action.payload !== mov.id))
+        }
         default: 
         return state
     }

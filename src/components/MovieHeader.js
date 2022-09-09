@@ -1,11 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
+import favoritesReducer from '../reducers/favoritesReducer';
 
 
 const MovieHeader = (props) => {
-    const {appTitle} = props;
-    const displayFavorites = true;
+    const {appTitle, displayFavorites} = props;
+    
     
     return(<div className="table-title">
         <div className="row">
@@ -24,7 +25,9 @@ const MovieHeader = (props) => {
 const mapStateToProps = (state) => {
     console.log('stored state in movie header component', state)
     return {
-        appTitle: state.appTitle
+        appTitle: state.movieReducer.appTitle,
+        displayFavorites: state.favoritesReducer.favorites
+
     }
 }
 

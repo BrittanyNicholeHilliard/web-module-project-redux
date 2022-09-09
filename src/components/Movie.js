@@ -2,19 +2,24 @@ import React from 'react';
 import { useParams, useHistory } from 'react-router-dom';
 import { connect } from 'react-redux'
 import { deleteMovie } from '../actions/movieActions';
-
+import favoritesReducer from '../reducers/favoritesReducer'
+import { addFavorite } from '../actions/favoritesActions';
 
 const Movie = (props) => {
     const { id } = useParams();
     const { push } = useHistory();
 
-    const {movies, deleteMovie} = props;
+    const {movies, deleteMovie, displayFavorites, addFavorite} = props;
 
     const movie = movies.find(movie=>movie.id===Number(id));
 
     const clickDelete = (id) => {
         deleteMovie(movie.id);
         push('/movies')
+    }
+
+    const clickFavorite = (id) => {
+        addFavorite(movie.id)
     }
 
     
@@ -46,8 +51,8 @@ const Movie = (props) => {
                             </div>
                         </section>
                         
-                        <section>
-                            <span className="m-2 btn btn-dark">Favorite</span>
+                        <section>{props.displayFavorites ? 
+                            <span className="m-2 btn btn-dark" onClick={clickFavorite}>Favorite</span> : null }
                             <span className="delete"><input type="button" className="m-2 btn btn-danger" value="Delete" onClick={clickDelete}/></span>
                         </section>
                     </div>
@@ -60,8 +65,9 @@ const Movie = (props) => {
 const mapStateToProps = (state) => {
     console.log('stored state in movie component', state)
     return {
-        movies: state.movieReducer.movies
+        movies: state.movieReducer.movies,
+        displayFavorites: state.favoritesReducer.displayFavorites
     }
 }
 
-export default connect(mapStateToProps, {deleteMovie})(Movie);
+export default connect(mapStateToProps, {deleteMovie, addFavorite})(Movie);
