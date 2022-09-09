@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 
@@ -21,5 +21,10 @@ const FavoriteMovieList = (props) => {
     </div>);
 }
 
-
-export default FavoriteMovieList;
+const mapStateToProps = (state) => {
+    console.log('stored state in favoritemovie component', state)
+    return {
+        favorites: state.favoritesReducer.favorites
+    }
+}
+export default connect(mapStateToProps)(FavoriteMovieList);

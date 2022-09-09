@@ -60,7 +60,7 @@ const Movie = (props) => {
 const mapStateToProps = (state) => {
     console.log('stored state in movie component', state)
     return {
-        movies: state.movies
+        movies: state.movieReducer.movies
     }
 }
 
